@@ -3,6 +3,14 @@ suggested-stock-picker
 
 A PHP script that polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price
 
+Trading Suggestion
+==================
+The following is a trading suggestion and does not constitute trading advice, neither direct nor implied.
+
+- When buying shares, buy in quantities of 100 shares. 
+- Adopt a buy and hold strategy and resist the urge to day trade.
+
+
 Recommended Video
 =================
 
