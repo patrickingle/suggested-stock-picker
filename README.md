@@ -15,12 +15,15 @@ Suggested Videos
 ================
 
 The Basics of Stock Dividends
+
 [![The Basics of Stock Dividends](http://img.youtube.com/vi/nIINBjajVeA/0.jpg)](http://www.youtube.com/watch?v=nIINBjajVeA)
 
 Key benefits of owning dividend stocks with David Stanley and Rob Carrick
+
 [![Key benefits of owning dividend stocks with David Stanley and Rob Carrick](http://img.youtube.com/vi/Es-1gTbhTrg/0.jpg)](http://www.youtube.com/watch?v=Es-1gTbhTrg)
 
 Potential benefits of dividend-paying equities
+
 [![Potential benefits of dividend-paying equities](http://img.youtube.com/vi/2hwMU1F-Kis/0.jpg)](http://www.youtube.com/watch?v=2hwMU1F-Kis)
 
 
