@@ -24,6 +24,15 @@ Suggested Videos
 
 The Basics of Stock Dividends
 
+Profit Payout Ratio (PPR) = Total Dividend Payout / Profit Before Dividend Payout * 100
+
+if PPR is less than 50%, then the company can afford to substain (and increase) dividend payouts
+if PPR is greater than 50%, then this company cannot substain it's dividend payouts.
+
+To determine the Dividend Payout Ratio, http://www.dummies.com/business/accounting/how-to-read-financial-reports-for-the-dividend-payout-ratio/
+
+Ex Div Date = dividends paid out up to the year end date
+
 [![The Basics of Stock Dividends](http://img.youtube.com/vi/nIINBjajVeA/0.jpg)](http://www.youtube.com/watch?v=nIINBjajVeA)
 
 Key benefits of owning dividend stocks with David Stanley and Rob Carrick

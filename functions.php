@@ -42,6 +42,13 @@ function _nyse_get_listed_companies($country) {
 			$symbol = trim($temp[0]);
 			$title = trim($temp[1]);
 			$quote = _get_quote_from_yahoo($symbol);
+			if (isset($quote['dividend']) && isset($quote['eps']) && $quote['eps'] > 0) {
+				$ppr = $quote['dividend'] / $quote['eps'];
+			} else {
+				$quote['dividend'] = 'N/A';
+				$quote['eps'] = 0.0;
+				$ppr = -1;
+			}
 
 			$listed[] = array(
 				'symbol' => $symbol,
@@ -50,7 +57,9 @@ function _nyse_get_listed_companies($country) {
 				'dividend' => $quote['dividend'],
 				'dividend_yield' => $quote['div yield'],
 				'url' => str_replace("quote-idc","quote",$equity['url']),
-				'quote' => $quote
+				'edgar' => 'https://www.sec.gov/cgi-bin/browse-edgar?company='.urlencode($title).'&owner=exclude&action=getcompany',
+				'quote' => $quote,
+				'ppr' => $ppr
 			);
 		}
 	}
@@ -77,6 +86,8 @@ function _nyse_get_regions($ticker) {
 // http://download.finance.yahoo.com/d/quotes.csv?s=DBK.DE&f=sd1op&e=.csv
 /**
 *
+* More information: http://www.jarloo.com/yahoo_finance/
+*
 * @param $symbol = company trading symbol
 * @param $divonly = filter only companies with have dividends
 * @param $maxprice = filter companies with a share price less than this value
@@ -87,10 +98,10 @@ function _nyse_get_regions($ticker) {
 function _get_quote_from_yahoo($symbol,$divonly=false,$maxprice=100,$mindivpct=10) {
 	$quote_array = array();
 
-	$quote_mapping = array('open','close','dividend','div paydate','div yield');
+	$quote_mapping = array('open','close','dividend','div paydate','div yield', 'eps');
 
 	// properties: s=symbol,d1=last trade date,o=open,p=previous close,r1=dividend paye date,y=div yield,y0=div yield in percent
-	$url = 'http://download.finance.yahoo.com/d/quotes.csv?s='.$symbol.'&f=opdr1y&e=.csv';
+	$url = 'http://download.finance.yahoo.com/d/quotes.csv?s='.$symbol.'&f=opdr1ye&e=.csv';
 	$quote_array['url'] = $url;
 	$contents = @file_get_contents($url);
 
@@ -130,6 +141,57 @@ function _get_quote_from_google($symbol,$divonly=false,$maxprice=100,$mindivpct=
 	}
 
 	return $quote_array;
+}
+
+function _load_company_list($exchange='nyse') {
+	$fname = '';
+
+	switch($exchange) {
+		default:
+		case 'nyse':
+			$url = 'https://www.nyse.com/quote/XNYS:';
+			$fname = 'nyse-company-list.csv';
+			break;
+		case 'nasdaq':
+			$url = 'https://www.nyse.com/quote/';
+			$fname = 'nasdaq-company-list.csv';
+			break;
+		case 'amex':
+			$url = 'https://www.nyse.com/quote/XASE:';
+			$fname = 'amex-company-list.csv';
+			break;
+	}
+
+	$fp = fopen($fname,'r');
+	$contents = fgetcsv($fp);
+	$listed = array();
+
+	while (($data = fgetcsv($fp, 1000, ",")) !== FALSE) {
+		$symbol = $data[0];
+		$title = $data[1];
+		//$url = ($exchange == 'nyse' ? $data[8] : $data[7]);
+		$quote = _get_quote_from_yahoo($symbol);
+		if (isset($quote['dividend']) && isset($quote['eps']) && $quote['eps'] > 0) {
+			$ppr = $quote['dividend'] / $quote['eps'];
+		} else {
+			$quote['dividend'] = 'N/A';
+			$quote['eps'] = 0.0;
+			$ppr = -1;
+		}
+
+		$listed[] = array(
+			'symbol' => $symbol,
+			'title' => $title,
+			'url' => $url.$symbol,
+			'edgar' => 'https://www.sec.gov/cgi-bin/browse-edgar?company='.urlencode($title).'&owner=exclude&action=getcompany',
+			'quote' => $quote,
+			'ppr' => $ppr
+		);
+	}
+
+	fclose($fp);
+
+	return $listed;
 }
 
 ?>

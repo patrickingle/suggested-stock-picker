@@ -1,7 +1,7 @@
 <?php
 /**
-* File: nyse.php
-* Description: main execution script
+* File: nasdaq.php
+* Description: main execution script for nasdaq
 * Author: Patrick Ingle for PHK Corporation
 * Author URL: http://phkcorp.com
 * License: COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0 (CDDL-1.0) [See lincese.txt]
@@ -9,24 +9,19 @@
 include 'table2arr.php';
 include 'functions.php';
 
-// Obtain a list of countries
-//$countries = _nyse_get_regions();
-
-$results = array();
 $country = 9; // default US selected
-// Obtain a list of traded equities for the US.
-$results[$country] = _nyse_get_listed_companies($country);
 
-file_put_contents('nyse_'.time().'.json',json_encode($results[$country]));
+$companies = _load_company_list('nasdaq');
 
-//echo '<pre>'; print_r($results); echo '</pre>'; exit;
-//echo '<pre>';
+file_put_contents('nasdaq_'.time().'.json',json_encode($companies));
+
+//echo '<pre>'; print_r($companies); echo '</pre>';
+
 
 $suggested = array();
 $total_dividend = 0.0;
 
-// Parse the company list looking for companies that meet the minimum requirements
-foreach($results[9] as $equity) {
+foreach($companies as $equity) {
 	// find companies which offer dividends with a maximum $100 share price and
 	// minimum 10% dividend return.
 
@@ -35,20 +30,20 @@ foreach($results[9] as $equity) {
 		$temp['symbol'] = $equity['symbol'];
 		$temp['company'] = $equity['title'];
 		$temp['url'] = $equity['url'];
-		$temp['dividend'] = $equity['dividend'];
-		$temp['yield'] = $equity['dividend_yield'];
+		$temp['edgar'] = $equity['edgar'];
+		$temp['dividend'] = $equity['quote']['dividend'];
+		$temp['yield'] = $equity['quote']['div yield'];
 		$temp['quote'] = json_encode($equity['quote']);
 		$temp['eps'] = $equity['quote']['eps'];
 		$temp['dividend_payout_ratio'] = $equity['ppr'];
 		$suggested[] = $temp;
 		//print_r($temp);
-		$total_dividend += $equity['dividend'];
+		$total_dividend += $equity['quote']['dividend'];
 	}
 }
 
-//echo '</pre>';
 // Save the results in a CSV file.
-$fp = fopen('nyse_suggested_'.$country.'_'.time().'.csv', 'w');
+$fp = fopen('nasdaq_suggested_'.$country.'_'.time().'.csv', 'w');
 
 $total_suggested = count($suggested);
 
@@ -58,5 +53,6 @@ foreach ($suggested as $fields) {
 }
 
 fclose($fp);
+
 
 ?>
