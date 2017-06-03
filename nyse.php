@@ -10,29 +10,38 @@ include 'table2arr.php';
 include 'functions.php';
 
 // Obtain a list of countries
-$countries = _nyse_get_regions();
+//$countries = _nyse_get_regions();
 
 $results = array();
 $country = 9; // default US selected
 // Obtain a list of traded equities for the US.
 $results[$country] = _nyse_get_listed_companies($country);
 
+file_put_contents('nyse_'.time().'.json',json_encode($results[$country]));
+
+//echo '<pre>'; print_r($results); echo '</pre>'; exit;
+//echo '<pre>';
+
 $suggested = array();
 
 // Parse the company list looking for companies that meet the minimum requirements
 foreach($results[9] as $equity) {
-	// find companies which offer dividends with a maximum $100 share price and 
+	// find companies which offer dividends with a maximum $100 share price and
 	// minimum 10% dividend return.
-	$quote = _get_quote_from_yahoo($equity[0],true); 
 
-	if (count($quote) > 0) {
+	if ($equity['quote']['close'] <= 100.00 && $equity['quote']['div yield'] >= 10) {
 		$temp = array();
-		$temp = $equity;
-		$temp['quote'] = json_encode($quote);
+		$temp['symbol'] = $equity['symbol'];
+		$temp['company'] = $equity['title'];
+		$temp['url'] = $equity['url'];
+		$temp['quote'] = json_encode($equity['quote']);
 		$suggested[] = $temp;
+		//print_r($temp);
+		$total_dividend_yield += $quote['div yield'];
 	}
 }
 
+//echo '</pre>';
 // Save the results in a CSV file.
 $fp = fopen('suggested_'.$country.'_'.time().'.csv', 'w');
 
