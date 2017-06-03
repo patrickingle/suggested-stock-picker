@@ -23,6 +23,7 @@ file_put_contents('nyse_'.time().'.json',json_encode($results[$country]));
 //echo '<pre>';
 
 $suggested = array();
+$total_dividend = 0.0;
 
 // Parse the company list looking for companies that meet the minimum requirements
 foreach($results[9] as $equity) {
@@ -34,10 +35,12 @@ foreach($results[9] as $equity) {
 		$temp['symbol'] = $equity['symbol'];
 		$temp['company'] = $equity['title'];
 		$temp['url'] = $equity['url'];
+		$temp['dividend'] = $equity['dividend'];
+		$temp['yield'] = $equity['dividend_yield'];
 		$temp['quote'] = json_encode($equity['quote']);
 		$suggested[] = $temp;
 		//print_r($temp);
-		$total_dividend_yield += $quote['div yield'];
+		$total_dividend += $equity['dividend'];
 	}
 }
 
@@ -45,7 +48,10 @@ foreach($results[9] as $equity) {
 // Save the results in a CSV file.
 $fp = fopen('suggested_'.$country.'_'.time().'.csv', 'w');
 
+$total_suggested = count($suggested);
+
 foreach ($suggested as $fields) {
+	$fields['allocation'] = 1000000 * ($fields['dividend'] / $total_dividend);
     fputcsv($fp, $fields);
 }
 
