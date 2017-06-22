@@ -17,7 +17,7 @@ $country = 9; // default US selected
 // Obtain a list of traded equities for the US.
 $results[$country] = _nyse_get_listed_companies($country);
 
-file_put_contents('nyse_'.time().'.json',json_encode($results[$country]));
+file_put_contents('data/nyse_'.time().'.json',json_encode($results[$country]));
 
 //echo '<pre>'; print_r($results); echo '</pre>'; exit;
 //echo '<pre>';
@@ -48,7 +48,7 @@ foreach($results[9] as $equity) {
 
 //echo '</pre>';
 // Save the results in a CSV file.
-$fp = fopen('nyse_suggested_'.$country.'_'.time().'.csv', 'w');
+$fp = fopen('picks/nyse_suggested_'.$country.'_'.time().'.csv', 'w');
 
 $total_suggested = count($suggested);
 

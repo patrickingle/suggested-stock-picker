@@ -13,7 +13,7 @@ $country = 9; // default US selected
 
 $companies = _load_company_list('nasdaq');
 
-file_put_contents('nasdaq_'.time().'.json',json_encode($companies));
+file_put_contents('data/nasdaq_'.time().'.json',json_encode($companies));
 
 //echo '<pre>'; print_r($companies); echo '</pre>';
 
@@ -43,7 +43,7 @@ foreach($companies as $equity) {
 }
 
 // Save the results in a CSV file.
-$fp = fopen('nasdaq_suggested_'.$country.'_'.time().'.csv', 'w');
+$fp = fopen('picks/nasdaq_suggested_'.$country.'_'.time().'.csv', 'w');
 
 $total_suggested = count($suggested);
 

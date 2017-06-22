@@ -13,7 +13,7 @@ $country = 9; // default US selected
 
 $companies = _load_company_list('amex');
 
-file_put_contents('amex_'.time().'.json',json_encode($companies));
+file_put_contents('data/amex_'.time().'.json',json_encode($companies));
 
 //echo '<pre>'; print_r($companies); echo '</pre>';
 
@@ -44,7 +44,7 @@ foreach($companies as $equity) {
 echo '<pre>'; print_r($suggested); echo '</pre>';
 
 // Save the results in a CSV file.
-$fp = fopen('amex_suggested_'.$country.'_'.time().'.csv', 'w');
+$fp = fopen('picks/amex_suggested_'.$country.'_'.time().'.csv', 'w');
 
 $total_suggested = count($suggested);
 
