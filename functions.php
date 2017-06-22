@@ -163,10 +163,10 @@ function _load_company_list($exchange='nyse') {
 	}
 
 	$fp = fopen($fname,'r');
-	$contents = fgetcsv($fp);
+	$contents = @fgetcsv($fp);
 	$listed = array();
 
-	while (($data = fgetcsv($fp, 1000, ",")) !== FALSE) {
+	while (($data = @fgetcsv($fp, 1000, ",")) !== FALSE) {
 		$symbol = $data[0];
 		$title = $data[1];
 		//$url = ($exchange == 'nyse' ? $data[8] : $data[7]);

@@ -41,7 +41,7 @@ foreach($companies as $equity) {
 	}
 }
 
-echo '<pre>'; print_r($suggested); echo '</pre>';
+//echo '<pre>'; print_r($suggested); echo '</pre>';
 
 // Save the results in a CSV file.
 $fp = fopen('picks/amex_suggested_'.$country.'_'.time().'.csv', 'w');
