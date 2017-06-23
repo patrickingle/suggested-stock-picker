@@ -3,6 +3,16 @@ suggested-stock-picker
 
 A PHP script that polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price
 
+About the data and picks directory
+==================================
+For those who do not have the resources to execute this script, I have this script executed every Sunday and updates new picks (or suggested equities) and save the new files in the picks. The data directory contains a JSON snapshot list of all companies on the selected exchange.
+
+Only the last 10 weeks of data and picks are kept.
+
+The criteria that I set for my picks are the closing price less than $100 and the stock divident rate greater than or equal to 10%.
+
+To view my picks, navigate your browser to the picks directory by clicking on the picks link above, then choose the CSV file of the picks that you want to se and Click on that file, your browser will show you the picks in a nice tabular format. You can alternatively download the file and open i your favorit spreadsheet program.
+
 Trading Suggestion
 ==================
 The following is a trading suggestion and does not constitute trading advice, neither direct nor implied.
