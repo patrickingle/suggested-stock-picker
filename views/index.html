@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Suggested Stock Picker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    </head>
+    <body>
+        <div class="w3-container w3-center">
+            <h2 class="w3-teal">Suggested Stock Picker</h2>
+            <input type="number" class="w3-input w3-block" id="max_price" value="" placeholder="The maximum equity price" />
+            <label for="max_price">Maximum Equity Price</label>
+            <br/>
+            <input type="number" class="w3-input w3-block" id="min_divyield" value="" placeholder="Minimum dividend yield in %" />
+            <label for="min_divyield">Minimum Dividend Yield (%)</label>
+            <br/>
+            <button id="find_suggested" class="w3-button w3-block w3-green">Find Suggested ?</button>
+            <br/>
+            <select id="filelist" class="w3-input w3-block"></select>
+            <fieldset>
+                <legend>Suggested Picks</legend>
+                <div id="contents"></div>
+            </fieldset>
+            <br/>
+            <button id="read_file" class="w3-button w3-block w3-green">Read File</button>
+            <br/>
+        </div>
+        <script type="text/javascript">
+        var host = localStorage.getItem("host");
+        var port = localStorage.getItem("port");
+
+        document.getElementById("find_suggested").addEventListener("click", function(){
+        });
+
+        document.getElementById("read_file").addEventListener("click", function(){
+            var fileName = document.getElementById("filelist").value;
+            readFile("data", fileName, function(contents){
+                document.getElementById("contents").innerText = JSON.stringify(contents);
+            });
+        });
+
+        function getFiles(callback) {
+            var url = "http://" + host + ":" + port;
+            fetch(url + "/ls/data")
+            .then(res=>res.json())
+            .then(function(equities){
+                console.log(equities);
+                callback(equities);
+            });
+        }
+
+        function readFile(path, fileName, callback) {
+            var url = "http://" + host + ":" + port;
+            fetch(url + "/equities/" + path + "," + fileName)
+            .then(res=>res.json())
+            .then(function(contents){
+                console.log(contents);
+                callback(contents);
+            });
+        }
+
+        function getEquities(page_no, callback) {
+            var url = "http://" + host + ":" + port;
+            fetch(url + "/equities/" + page_no)
+            .then(res=>res.json())
+            .then(function(contents){
+                console.log(contents);
+                callback(contents);
+            });
+        }
+
+        window.onload = function() {
+            getFiles(function(equities){
+                document.getElementById("filelist").innerHTML = '<option value="">Select</option>';
+                equities.forEach(function(equity,index){
+                    document.getElementById("filelist").innerHTML += '<option value="'+equity+'">'+equity+'</option>';
+                });
+            });
+
+            getEquities(1,function(equities){
+                console.log(equities);
+            });
+        }
+        </script>
+    </body>
+</html>

@@ -2,8 +2,8 @@
 /**
 * File: nyse.php
 * Description: main execution script
-* Author: Patrick Ingle for PHK Corporation
-* Author URL: http://phkcorp.com
+* Author: Patrick Ingle for PressPage Entertainment Inc DBA PINGLEARE
+* Author URL: https://pingleware.work
 * License: COMMON DEVELOPMENT AND DISTRIBUTION LICENSE Version 1.0 (CDDL-1.0) [See lincese.txt]
 */
 include 'table2arr.php';

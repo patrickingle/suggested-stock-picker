@@ -3,6 +3,111 @@ suggested-stock-picker
 
 A PHP script that polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price
 
+Updating equity CSV files
+=========================
+Occasinally, the equity company files will need to be updated. 
+
+NYSE https://www.nyse.com/listings_directory/stock
+
+NYSE, NASDAQ, AMEX: https://www.nasdaq.com/api/v1/screener?page=1&pageSize=20 about 300 pages (from 1-300)
+
+returns,
+
+{
+    "data":[
+        {
+            "ticker":"AAPL",
+            "company":"Apple Inc",
+            "marketCap":1156096627600,
+            "marketCapGroup":"Mega",
+            "sectorName":"Consumer Goods",
+            "sector":"consumergoods",
+            "dividendData":{
+                "dividendYield":1.2039,
+                "dividend":0.77000000000000002,
+                "dividendYieldGroup":"Positive"
+            },
+            "analystConsensusLabel":"Moderate Buy",
+            "analystConsensus":"ModerateBuy",
+            "priceTargetData":{
+                "analystPriceTarget":249.56,
+                "upside":-0.024469999999999999,
+                "upsideGroup":4
+            },
+            "bestAnalystConsensusLabel":"Moderate Buy",
+            "bestAnalystConsensus":"ModerateBuy",
+            "bestPriceTargetData":{
+                "analystPriceTarget":252.41,
+                "upside":-0.01332,
+                "upsideGroup":4
+            },
+            "newsSentimentData":{
+                "signal":"ModerateBuy",
+                "label":"Moderate Buy",
+                "score":0.8367
+            },
+            "insiderSentimentData":{
+                "signal":"Hold",
+                "label":"Hold",
+                "score":0.29160000000000003
+            },
+            "mediaBuzzData":{
+                "signal":"ModerateBuy",
+                "label":"Moderate Buy",
+                "score":0.62914999999999999
+            },
+            "hedgeFundSentimentData":{
+                "signal":"Negative",
+                "label":"Negative",
+                "score":0.3493
+            },
+            "investorSentimentData":{
+                "signal":"StrongSell",
+                "label":"Strong Sell",
+                "score":0
+            },
+            "bloggerSentimentData":{
+                "signal":"Bullish",
+                "label":"Bullish",
+                "bearishCount":15,"bullishCount":99
+            },
+            "priceChartSevenDay":[
+                {
+                    "date":"2019-10-24T00:00:00",
+                    "price":243.58000000000001
+                },
+                {
+                    "date":"2019-10-25T00:00:00",
+                    "price":246.58000000000001
+                },
+                {
+                    "date":"2019-10-28T00:00:00",
+                    "price":249.05000000000001
+                },
+                {
+                    "date":"2019-10-29T00:00:00",
+                    "price":243.28999999999999
+                },
+                {
+                    "date":"2019-10-30T00:00:00",
+                    "price":243.25999999999999
+                },
+                {
+                    "date":"2019-10-31T00:00:00",
+                    "price":248.75999999999999
+                },
+                {
+                    "date":"2019-11-01T00:00:00",
+                    "price":255.81999999999999
+                }
+            ],
+            "articles":[],
+            "gicsSector":"Materials",
+            "gicsSectorName":"Materials"
+        }
+    ]
+}
+
 About the data and picks directory
 ==================================
 For those who do not have the resources to execute this script, I have this script executed every Sunday and updates new picks (or suggested equities) and save the new files in the picks. The data directory contains a JSON snapshot list of all companies on the selected exchange.

@@ -1,0 +1,50 @@
+{
+  "name": "suggested-stock-picker",
+  "version": "1.0.0",
+  "description": "Polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price",
+  "main": "app.js",
+  "build": {
+    "win": {
+      "icon": "./images/stocksplit-256x2.png"
+    },
+    "files": [
+      
+    ],
+    "extraFiles": [
+      "settings.json"
+    ]
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "release": "build",
+    "doc": "apidoc -f app.js -o ./views/doc/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickingle/suggested-stock-picker.git"
+  },
+  "author": "PressPage Entertainment Inc DBA PINGLEWARE",
+  "license": "AAL",
+  "bugs": {
+    "url": "https://github.com/patrickingle/suggested-stock-picker/issues"
+  },
+  "homepage": "https://github.com/patrickingle/suggested-stock-picker#readme",
+  "devDependencies": {
+    "electron": "^6.0.11"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "config.json": "0.0.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "killable": "^1.0.1",
+    "node-adodb": "^5.0.2",
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7"
+  }
+}
