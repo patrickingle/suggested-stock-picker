@@ -7,11 +7,10 @@
     "win": {
       "icon": "./images/stocksplit-256x2.png"
     },
-    "files": [
-      
-    ],
+    "files": [],
     "extraFiles": [
-      "settings.json"
+      "settings.json",
+      "data/equities_20200707.json"
     ]
   },
   "scripts": {

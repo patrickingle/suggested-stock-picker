@@ -2,7 +2,7 @@
 
 // Modules to control application life and create native browser window
 var config = require('config.json')('./settings.json');
-const {app, BrowserWindow, Menu} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain} = require('electron');
 const path = require('path');
 var fs = require('fs');
 var http = require('http');
@@ -87,6 +87,33 @@ app.on('activate', function () {
   if (mainWindow === null) createWindow();
 });
 
+ipcMain.on('error', function(evt, data){
+  mainWindow.webContents.send('error', 'NOT IMPLEMENTED');
+});
+ipcMain.on('getFiles', function(evt, user_path){
+  var directoryPath = path.join(__dirname, user_path);
+  var _files = [];
+
+  fs.readdir(directoryPath, function (err, files) {
+    //handling error
+    if (err) throw err;
+    
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        _files.push(file);
+    });
+    //res.json(_files);
+    mainWindow.webContents.send('getFiles', JSON.stringify(_files));
+  });
+});
+ipcMain.on('readFile', function(evt, data){
+  mainWindow.webContents.send('readFile', 'NOT IMPLEMENTED');
+});
+ipcMain.on('getEquities', function(evt, data){
+  mainWindow.webContents.send('getEquities', 'NOT IMPLEMENTED');
+});
+
 rest.get("/", cors(), function(req, res, next){
   res.json("{'about':'Suggested Stock Picker'}");
 });
@@ -94,8 +121,9 @@ rest.get("/", cors(), function(req, res, next){
 rest.get("/equities/:path,:fileName", cors(), function(req, res, next){
   let fullPathName = req.params.path + "/" + req.params.fileName;
   var directoryPath = path.join(__dirname, fullPathName);
-  if (fs.existsSync(directoryPath)) {
-    fs.readFile(directoryPath, {encoding: 'utf-8'}, function(err,data){
+  console.log(fullPathName);
+  if (fs.existsSync(fullPathName)) {
+    fs.readFile(fullPathName, {encoding: 'utf-8'}, function(err,data){
       if (err) res.json("{error: " + err + "}");
       res.json(JSON.parse(data));
     });    
@@ -106,9 +134,10 @@ rest.get("/equities/:path,:fileName", cors(), function(req, res, next){
 
 rest.get("/ls/:path", cors(), function(req, res, next){
   var directoryPath = path.join(__dirname, req.params.path);
+  console.log(directoryPath);
   var _files = [];
 
-  fs.readdir(directoryPath, function (err, files) {
+  fs.readdir(req.params.path, function (err, files) {
     //handling error
     if (err) throw err;
     
