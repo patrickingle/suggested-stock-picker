@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/patrickingle/suggested-stock-picker#readme",
   "devDependencies": {
-    "electron": "^6.0.11"
+    "electron": "^7.2.4"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
