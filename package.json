@@ -1,9 +1,30 @@
 {
   "name": "suggested-stock-picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price",
   "main": "app.js",
   "build": {
+    "appId": "work.pingleware.suggestedstockpicker",
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
     "win": {
       "icon": "./images/stocksplit-256x2.png"
     },
@@ -14,11 +35,10 @@
     ]
   },
   "scripts": {
-    "start": "electron .",
+    "start": "npm install && electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
-    "release": "build",
     "doc": "apidoc -f app.js -o ./views/doc/"
   },
   "repository": {
@@ -32,7 +52,8 @@
   },
   "homepage": "https://github.com/patrickingle/suggested-stock-picker#readme",
   "devDependencies": {
-    "electron": "^6.0.11"
+    "electron": "latest",
+    "electron-builder": "latest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -42,7 +63,6 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "killable": "^1.0.1",
-    "node-adodb": "^5.0.2",
     "node-fetch": "^2.6.0",
     "path": "^0.12.7"
   }
