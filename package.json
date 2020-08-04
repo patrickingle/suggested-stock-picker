@@ -20,6 +20,8 @@
       ]
     },
     "linux": {
+      "icon": "./images/stocksplit-256x2.png",
+      "category": "Utility",
       "target": [
         "AppImage",
         "deb"
@@ -35,7 +37,7 @@
     ]
   },
   "scripts": {
-    "start": "npm install && electron .",
+    "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
@@ -45,7 +47,10 @@
     "type": "git",
     "url": "git+https://github.com/patrickingle/suggested-stock-picker.git"
   },
-  "author": "PressPage Entertainment Inc DBA PINGLEWARE",
+  "author": {
+    "name": "PressPage Entertainment Inc DBA PINGLEWARE",
+    "email": "presspage.entertainment@gmail.com"
+  },
   "license": "AAL",
   "bugs": {
     "url": "https://github.com/patrickingle/suggested-stock-picker/issues"

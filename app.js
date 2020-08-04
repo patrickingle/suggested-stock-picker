@@ -26,15 +26,16 @@ rest.use(bodyParser.json());
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow = null;
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1072,
     height: 910,
-    icon: __dirname + '/images/stocksplit.ico',
+    icon: __dirname + '/images/stocksplit.png',
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
