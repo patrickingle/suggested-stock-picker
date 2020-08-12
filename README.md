@@ -4,6 +4,8 @@ A PHP script that polls Yahoo! Finance of all NYSE listed securities searching f
 
 A Node-Electron Desktop application has been released for standalone operation. Navigate to the Releases section of this repository.
 
+SEE UPDATE ON DRIP BELOW!
+
 # Updating equity CSV files
 
 Occasinally, the equity company files will need to be updated. 
@@ -159,6 +161,9 @@ Potential benefits of dividend-paying equities
 
 DRIP (Dividend Reinvesting Program)
 https://www.directinvesting.com/search/no_fees_list.cfm
+
+The Cash.app by Square offers equity and bitcoin purchasing without commissions. Save the $4+ from other brokers, and invest through your Cash.app.
+Sign up today for your own Cash.app at https://cash.app/app/QWQKPBN
 
 # Application Categories
 ## Books
