@@ -2,6 +2,8 @@
 
 A PHP script that polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price
 
+A Node-Electron Desktop application has been released for standalone operation. Navigate to the Releases section of this repository.
+
 # Updating equity CSV files
 
 Occasinally, the equity company files will need to be updated. 
