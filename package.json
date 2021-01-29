@@ -1,6 +1,6 @@
 {
   "name": "suggested-stock-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price",
   "main": "app.js",
   "build": {
@@ -75,7 +75,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "killable": "^1.0.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "path": "^0.12.7"
   }
 }
