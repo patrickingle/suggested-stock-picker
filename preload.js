@@ -33,37 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem("config", JSON.stringify(config));
   
     localStorage.setItem("cwd", process.cwd());
-  });
-/*
-const {
-    contextBridge,
-    ipcRenderer
-} = require("electron");
+});
 
-let validChannels = ["error","getFiles","readFile","getEquities"];
-
-// Expose protected methods that allow the renderer process to use
-// the ipcRenderer without exposing the entire object
-contextBridge.exposeInMainWorld(
-    "api", {
-        send: (channel, data) => {
-            // whitelist channels
-            if (validChannels.includes(channel)) {
-                console.log(data);
-                ipcRenderer.send(channel, data);
-            }
-        },
-        receive: (channel, func) => {
-            if (validChannels.includes(channel)) {
-                // Deliberately strip event as it includes `sender` 
-                ipcRenderer.on(channel, function(event, args) {
-                    func(channel, event, args)
-                });
-            }
-        }
-    },
-    "print", function(args) {
-        console.log(args);
-    }
-);
-*/
+var pjson = require('./package.json');
+localStorage.setItem("version",pjson.version);

@@ -1,6 +1,6 @@
 {
   "name": "suggested-stock-picker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Polls Yahoo! Finance of all NYSE listed securities searching for equities which meet a criteria of stock dividends, minimal stock dividend return and maximum stock price",
   "main": "app.js",
   "build": {
@@ -51,14 +51,21 @@
     "name": "PressPage Entertainment Inc DBA PINGLEWARE",
     "email": "presspage.entertainment@gmail.com"
   },
+  "maintainers": [
+    {
+      "name": "Patrick Ingle",
+      "email": "me@patrickingle.info",
+      "url": "https://patrickingle.info"
+    }
+  ],
   "license": "AAL",
   "bugs": {
     "url": "https://github.com/patrickingle/suggested-stock-picker/issues"
   },
   "homepage": "https://github.com/patrickingle/suggested-stock-picker#readme",
   "devDependencies": {
-    "electron": "latest",
-    "electron-builder": "latest"
+    "electron": "11.2.1",
+    "electron-builder": "22.7.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

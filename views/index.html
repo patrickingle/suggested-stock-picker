@@ -7,6 +7,7 @@
     </head>
     <body>
         <div class="w3-container w3-center">
+            <!-- HEADER -->
             <h2 class="w3-teal">Suggested Stock Picker</h2>
             <input type="number" class="w3-input w3-block" id="max_price" value="" placeholder="The maximum equity price" />
             <label for="max_price">Maximum Equity Price</label>
@@ -26,6 +27,15 @@
             </fieldset>
             <br/>
         </div>
+        <!-- FOOTER -->
+        <footer class="w3-container w3-card w3-teal w3-bottom">
+            <p class="w3-center">
+                &copy; 2020 <a href="https://patrickingle.info" target="_blank" style="text-decoration: none;">Patrick Ingle</a>
+                &nbsp;All rights reserved.
+                &nbsp;<span class="w3-tiny" id="version"></span>
+            </p>
+        </footer>
+  
         <script type="text/javascript">
         var host = localStorage.getItem("host");
         var port = localStorage.getItem("port");
@@ -129,6 +139,8 @@
             //getEquities(1,function(equities){
             //    console.log(equities);
             //});
+
+            document.getElementById("version").innerHTML = localStorage.getItem("version");
         }
         </script>
     </body>

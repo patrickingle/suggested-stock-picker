@@ -16,100 +16,100 @@ NYSE, NASDAQ, AMEX: https://www.nasdaq.com/api/v1/screener?page=1&pageSize=20 ab
 
 returns,
 
-{
-    "data":[
-        {
-            "ticker":"AAPL",
-            "company":"Apple Inc",
-            "marketCap":1156096627600,
-            "marketCapGroup":"Mega",
-            "sectorName":"Consumer Goods",
-            "sector":"consumergoods",
-            "dividendData":{
-                "dividendYield":1.2039,
-                "dividend":0.77000000000000002,
-                "dividendYieldGroup":"Positive"
-            },
-            "analystConsensusLabel":"Moderate Buy",
-            "analystConsensus":"ModerateBuy",
-            "priceTargetData":{
-                "analystPriceTarget":249.56,
-                "upside":-0.024469999999999999,
-                "upsideGroup":4
-            },
-            "bestAnalystConsensusLabel":"Moderate Buy",
-            "bestAnalystConsensus":"ModerateBuy",
-            "bestPriceTargetData":{
-                "analystPriceTarget":252.41,
-                "upside":-0.01332,
-                "upsideGroup":4
-            },
-            "newsSentimentData":{
-                "signal":"ModerateBuy",
-                "label":"Moderate Buy",
-                "score":0.8367
-            },
-            "insiderSentimentData":{
-                "signal":"Hold",
-                "label":"Hold",
-                "score":0.29160000000000003
-            },
-            "mediaBuzzData":{
-                "signal":"ModerateBuy",
-                "label":"Moderate Buy",
-                "score":0.62914999999999999
-            },
-            "hedgeFundSentimentData":{
-                "signal":"Negative",
-                "label":"Negative",
-                "score":0.3493
-            },
-            "investorSentimentData":{
-                "signal":"StrongSell",
-                "label":"Strong Sell",
-                "score":0
-            },
-            "bloggerSentimentData":{
-                "signal":"Bullish",
-                "label":"Bullish",
-                "bearishCount":15,"bullishCount":99
-            },
-            "priceChartSevenDay":[
-                {
-                    "date":"2019-10-24T00:00:00",
-                    "price":243.58000000000001
+    {
+        "data":[
+            {
+                "ticker":"AAPL",
+                "company":"Apple Inc",
+                "marketCap":1156096627600,
+                "marketCapGroup":"Mega",
+                "sectorName":"Consumer Goods",
+                "sector":"consumergoods",
+                "dividendData":{
+                    "dividendYield":1.2039,
+                    "dividend":0.77000000000000002,
+                    "dividendYieldGroup":"Positive"
                 },
-                {
-                    "date":"2019-10-25T00:00:00",
-                    "price":246.58000000000001
+                "analystConsensusLabel":"Moderate Buy",
+                "analystConsensus":"ModerateBuy",
+                "priceTargetData":{
+                    "analystPriceTarget":249.56,
+                    "upside":-0.024469999999999999,
+                    "upsideGroup":4
                 },
-                {
-                    "date":"2019-10-28T00:00:00",
-                    "price":249.05000000000001
+                "bestAnalystConsensusLabel":"Moderate Buy",
+                "bestAnalystConsensus":"ModerateBuy",
+                "bestPriceTargetData":{
+                    "analystPriceTarget":252.41,
+                    "upside":-0.01332,
+                    "upsideGroup":4
                 },
-                {
-                    "date":"2019-10-29T00:00:00",
-                    "price":243.28999999999999
+                "newsSentimentData":{
+                    "signal":"ModerateBuy",
+                    "label":"Moderate Buy",
+                    "score":0.8367
                 },
-                {
-                    "date":"2019-10-30T00:00:00",
-                    "price":243.25999999999999
+                "insiderSentimentData":{
+                    "signal":"Hold",
+                    "label":"Hold",
+                    "score":0.29160000000000003
                 },
-                {
-                    "date":"2019-10-31T00:00:00",
-                    "price":248.75999999999999
+                "mediaBuzzData":{
+                    "signal":"ModerateBuy",
+                    "label":"Moderate Buy",
+                    "score":0.62914999999999999
                 },
-                {
-                    "date":"2019-11-01T00:00:00",
-                    "price":255.81999999999999
-                }
-            ],
-            "articles":[],
-            "gicsSector":"Materials",
-            "gicsSectorName":"Materials"
-        }
-    ]
-}
+                "hedgeFundSentimentData":{
+                    "signal":"Negative",
+                    "label":"Negative",
+                    "score":0.3493
+                },
+                "investorSentimentData":{
+                    "signal":"StrongSell",
+                    "label":"Strong Sell",
+                    "score":0
+                },
+                "bloggerSentimentData":{
+                    "signal":"Bullish",
+                    "label":"Bullish",
+                    "bearishCount":15,"bullishCount":99
+                },
+                "priceChartSevenDay":[
+                    {
+                        "date":"2019-10-24T00:00:00",
+                        "price":243.58000000000001
+                    },
+                    {
+                        "date":"2019-10-25T00:00:00",
+                        "price":246.58000000000001
+                    },
+                    {
+                        "date":"2019-10-28T00:00:00",
+                        "price":249.05000000000001
+                    },
+                    {
+                        "date":"2019-10-29T00:00:00",
+                        "price":243.28999999999999
+                    },
+                    {
+                        "date":"2019-10-30T00:00:00",
+                        "price":243.25999999999999
+                    },
+                    {
+                        "date":"2019-10-31T00:00:00",
+                        "price":248.75999999999999
+                    },
+                    {
+                        "date":"2019-11-01T00:00:00",
+                        "price":255.81999999999999
+                    }
+                ],
+                "articles":[],
+                "gicsSector":"Materials",
+                "gicsSectorName":"Materials"
+            }
+        ]
+    }
 
 # About the data and picks directory
 For those who do not have the resources to execute this script, I have this script executed every Sunday and updates new picks (or suggested equities) and save the new files in the picks. The data directory contains a JSON snapshot list of all companies on the selected exchange.
@@ -155,15 +155,29 @@ Key benefits of owning dividend stocks with David Stanley and Rob Carrick
 
 Potential benefits of dividend-paying equities
 
-[![Potential benefits of dividend-paying equities](http://img.youtube.com/vi/2hwMU1F-Kis/0.jpg)](http://www.youtube.com/watch?v=2hwMU1F-Kis)
+[![Dividend Investing: Pros and Cons of Investing in Dividend Stocks](https://i.ytimg.com/an_webp/3gmbrO_PUt8/mqdefault_6s.webp?du=3000&sqp=CPq5z4AG&rs=AOn4CLCxLTTum9d3_34uUyBhyeWgQXDN3w)](https://www.youtube.com/watch?v=3gmbrO_PUt8)
+
+Robot Financial Advisor
+[![How to use the Robot Financial Advisor](https://i.ytimg.com/vi/tzBgDPubLLI/hqdefault.jpg?sqp=-oaymwEZCOADEI4CSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDQefXZjrjLNia1jvh8BC9f37Ojug)](https://www.youtube.com/watch?v=tzBgDPubLLI)
 
 # Suggested Links
 
 DRIP (Dividend Reinvesting Program)
 https://www.directinvesting.com/search/no_fees_list.cfm
 
+Robot Financial Advisor can be downloaded from https://sourceforge.net/projects/robot-financial-advisor/ 
+
+## Blog Topics
+### Invest your rebates, don't spend it
+See more at https://survivalrevealed.blog/invest-your-rebates-dont-spend-it/
+
+### Retirement for GIG Workers
+See more at https://survivalrevealed.blog/retirement-for-gig-economy-workers/
+
+# How to Invest
 The Cash.app by Square offers equity and bitcoin purchasing without commissions. Save the $4+ from other brokers, and invest through your Cash.app.
 Sign up today for your own Cash.app at https://cash.app/app/QWQKPBN
+
 
 # Application Categories
 ## Books

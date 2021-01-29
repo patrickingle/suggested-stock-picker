@@ -65,8 +65,9 @@ function createWindow () {
   })
 
   if (config.menu && config.menu == "off") {
-    let menu = Menu.buildFromTemplate(menuTemplate);
-    Menu.setApplicationMenu(menu);  
+    //let menu = Menu.buildFromTemplate(menuTemplate);
+    //Menu.setApplicationMenu(menu);  
+    mainWindow.setMenu(null);
   }
 }
 

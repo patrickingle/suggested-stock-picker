@@ -2,5 +2,5 @@
     "domain": "localhost",
     "host": "localhost",
     "port": 7000,
-    "menu": "on"
+    "menu": "off"
 }
